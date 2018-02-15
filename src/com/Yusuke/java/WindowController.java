@@ -24,9 +24,8 @@ public class WindowController {
 		str = str.replace("%%PARAGRAPH_END%%", "\n\n");
 		
 		//引用番号を除去
-		str = str.replaceAll("( *\\[[0-9]+\\] *)+", "%%QUOTATION%%");
-		str = str.replaceAll("%%QUOTATION%%\\.", "."); //ピリオド直前の引用は半角スペース不要
-		str = str.replaceAll("%%QUOTATION%%,", ","); //カンマ直前の引用は半角スペース不要
+		str = str.replaceAll(" *\\[[0-9]+\\] *", "%%QUOTATION%%");
+		str = str.replaceAll("%%QUOTATION%%\\.", "."); //文末の引用は半角スペース不要
 		str = str.replaceAll("%%QUOTATION%%", " ");
 		
 		//et al. のピリオドを除去
@@ -34,12 +33,6 @@ public class WindowController {
 		
 		//単語内の改行部分を修復
 		str = str.replaceAll("([a-zA-Z])- ([a-zA-Z])", "$1$2");
-		
-		//無駄な半角スペースを除去
-		str = str.replaceAll(" +", " ");
-		
-		//全角スペースを半角スペースに変換
-		str = str.replaceAll("　", " ");
 		
 		outputText.setText(str);
 		outputText.selectAll();
