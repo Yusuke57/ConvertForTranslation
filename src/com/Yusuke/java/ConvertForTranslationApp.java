@@ -14,6 +14,7 @@ public class ConvertForTranslationApp extends Application {
 		Parent root = FXMLLoader.load(getClass().getResource("window.fxml"));
 		Scene scene = new Scene(root, 640, 480);
 		stage.setScene(scene);
+		stage.setTitle("ConvertForTranslation");
 		stage.show();
 	}
 
