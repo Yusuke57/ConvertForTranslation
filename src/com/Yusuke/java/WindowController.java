@@ -29,5 +29,7 @@ public class WindowController {
 		str = str.replaceAll("([a-zA-Z])- ([a-zA-Z])", "$1$2");
 		
 		outputText.setText(str);
+		outputText.selectAll();
+		outputText.copy();
 	}
 }
