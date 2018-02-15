@@ -4,12 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.CheckBox;
 
 public class WindowController {
 	@FXML private Label label;
 	@FXML private TextArea inputText;
 	@FXML private TextArea outputText;
-	
+	@FXML private CheckBox checkbox;
 	@FXML
 	protected void buttonAction(ActionEvent event) {
 		String str = inputText.getText();
@@ -24,10 +25,12 @@ public class WindowController {
 		str = str.replace("%%PARAGRAPH_END%%", "\n\n");
 		
 		//引用番号を除去
-		str = str.replaceAll("( *\\[[0-9]+\\] *)+", "%%QUOTATION%%");
-		str = str.replaceAll("%%QUOTATION%%\\.", "."); //ピリオド直前の引用は半角スペース不要
-		str = str.replaceAll("%%QUOTATION%%,", ","); //カンマ直前の引用は半角スペース不要
-		str = str.replaceAll("%%QUOTATION%%", " ");
+		if(checkbox.isSelected()) {
+			str = str.replaceAll("( *\\[[0-9]+\\] *)+", "%%QUOTATION%%");
+			str = str.replaceAll("%%QUOTATION%%\\.", "."); //ピリオド直前の引用は半角スペース不要
+			str = str.replaceAll("%%QUOTATION%%,", ","); //カンマ直前の引用は半角スペース不要
+			str = str.replaceAll("%%QUOTATION%%", " ");
+		}
 		
 		//et al. のピリオドを除去
 		str = str.replace("et al. ", "et al ");
