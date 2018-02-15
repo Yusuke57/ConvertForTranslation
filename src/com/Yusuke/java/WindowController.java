@@ -25,6 +25,9 @@ public class WindowController {
 		//et al. のピリオドを除去
 		str = str.replace("et al. ", "et al ");
 		
+		//単語内の改行部分を修復
+		str = str.replaceAll("([a-zA-Z])- ([a-zA-Z])", "$1$2");
+		
 		outputText.setText(str);
 	}
 }
