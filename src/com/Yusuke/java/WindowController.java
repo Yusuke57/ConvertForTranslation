@@ -14,8 +14,14 @@ public class WindowController {
 	protected void buttonAction(ActionEvent event) {
 		String str = inputText.getText();
 		
+		//段落の最後の改行を退避
+		str = str.replaceAll("\\.\n+ *([A-Z|0-9])", ".%%PARAGRAPH_END%%$1");
+		
 		//改行文字を半角スペースに変換
 		str = str.replace("\n", " ");
+		
+		//段落の最後の改行は2つ分
+		str = str.replace("%%PARAGRAPH_END%%", "\n\n");
 		
 		//引用番号を除去
 		str = str.replaceAll(" *\\[[0-9]+\\] *", "%%QUOTATION%%");
