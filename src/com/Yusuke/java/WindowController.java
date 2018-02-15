@@ -17,10 +17,13 @@ public class WindowController {
 		//改行文字を半角スペースに変換
 		str = str.replace("\n", " ");
 		
-		//引用番号を半角スペースに変換
+		//引用番号を除去
 		str = str.replaceAll(" *\\[[0-9]+\\] *", "%%QUOTATION%%");
 		str = str.replaceAll("%%QUOTATION%%\\.", "."); //文末の引用は半角スペース不要
 		str = str.replaceAll("%%QUOTATION%%", " ");
+		
+		//et al. のピリオドを除去
+		str = str.replace("et al. ", "et al ");
 		
 		outputText.setText(str);
 	}
