@@ -16,7 +16,7 @@
 		<TextArea fx:id="inputText" prefWidth="320.0" />
 	</left>
 	<right>
-		<TextArea fx:id="outputText" prefWidth="320.0" text="変換結果が表示されます" />
+		<TextArea fx:id="outputText" prefWidth="320.0" wrapText="true" text="変換結果が表示されます" />
 	</right>
 	<bottom>
 		<Button fx:id="button" onAction="#buttonAction" text="Convert" BorderPane.alignment="CENTER" />
